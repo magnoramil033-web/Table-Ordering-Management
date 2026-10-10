@@ -323,7 +323,6 @@
         }
     });
 
-    // Render orders
     function renderOrders() {
         document.getElementById("orderRows").innerHTML =
             data.orders.map(order => `
@@ -365,7 +364,6 @@
         })[character]);
     }
 
-    // Display menu
     function renderMenu() {
         document.getElementById("menuGrid").innerHTML =
             data.menu.map(item => `
@@ -377,7 +375,6 @@
             `).join("");
     }
 
-    // Display table information and counts
     function renderTables() {
         const statuses = ["Available", "Occupied", "Reserved", "Cleaning"];
 
@@ -452,7 +449,6 @@
         renderTables();
     }
 
-    // Fill the table dropdown with available tables
     function renderOrderTableOptions() {
         const select = document.getElementById("orderTable");
         if (!select) return;
@@ -474,7 +470,6 @@
         }
     }
 
-    // Fill the menu dropdown
     function renderOrderMenuOptions() {
         document.getElementById("orderMenu").innerHTML =
             data.menu.map(item => `
@@ -484,7 +479,6 @@
             `).join("");
     }
 
-    // Add an order from the form
     document.getElementById("orderForm").addEventListener("submit", event => {
         event.preventDefault();
 
@@ -528,7 +522,6 @@
 
         data.orders.unshift(order);
 
-        // Automatically occupy the selected table.
         table.status = "Occupied";
 
         event.target.reset();
@@ -541,7 +534,6 @@
         alert("Order placed successfully!");
     });
 
-    // Update order status
     function updateOrderStatus(orderId, newStatus) {
         const order = data.orders.find(item => item.id === orderId);
         if (!order) return;
@@ -570,7 +562,6 @@
         renderTables();
     }
 
-    // Keep the Add Order button, but open the real order form.
     function addOrder() {
         show("orders");
         document.getElementById("customerName").focus();
@@ -589,7 +580,6 @@
             `).join("");
     }
 
-    // Display employees
     function renderEmployees() {
         document.getElementById("employeeRows").innerHTML =
             data.employees.map(employee => `
@@ -601,7 +591,6 @@
             `).join("");
     }
 
-    // Display sales summary
     function renderSales() {
         document.getElementById("sales").innerHTML =
             data.sales.map(item => `
@@ -625,7 +614,6 @@
             `).join("");
     }
 
-    // Search orders, menu, inventory, and employees
     document.getElementById("search").addEventListener("input", event => {
         const query = event.target.value.toLowerCase();
 
@@ -636,7 +624,6 @@
         });
     });
 
-    // Load the page
     renderOrders();
     renderMenu();
     renderTables();
